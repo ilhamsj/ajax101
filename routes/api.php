@@ -1,5 +1,7 @@
 <?php
 
+use App\Article;
+use App\Http\Resources\TestResource;
 use Illuminate\Http\Request;
 
 /*
@@ -15,4 +17,8 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('v1/articles', function () {
+    return new TestResource(Article::all());
 });
