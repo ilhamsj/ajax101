@@ -16,7 +16,9 @@
         <button type="submit">Upload</button>
     </form>
 
-    <img src="" alt="" srcset="">
+    <div id="images">
+
+    </div>
 
     <script src="{{ secure_url('js/app.js') }}"></script>
     <script src="{{ secure_url('js/jquery.min.js') }}"></script>
@@ -29,7 +31,11 @@
             url: url,
             success: function (response) {
                 console.log(response);
-                $('img').attr('src', response.gambar[0].replace('public', 'storage'));
+                $.map(response.gambar, function (el) {
+                    console.log(el);
+                    $('#images').append('<img src="images/'+el+'" alt="" srcset="">');
+                });
+                
             }
         });
 

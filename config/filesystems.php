@@ -43,10 +43,10 @@ return [
 
     'disks' => [
 
-        'upload' => [
-            'driver' => 's3',
-            'key' => env('AWS_ACCESS_KEY_ID'),
-            'url' => 'https://api.imgbb.com/1/upload',
+        'public_uploads' => [
+            'driver' => 'local',
+            'root' => public_path('images'),
+            'visibility' => 'public',
         ],
         
         'local' => [

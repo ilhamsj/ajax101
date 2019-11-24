@@ -1,9 +1,7 @@
 <?php
 
-use App\Article;
 use Illuminate\Http\Request;
-use App\Http\Resources\TestResource;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +19,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('v1/articles', function () {
+
+    $files = array_diff(scandir(public_path().'\images'), array('.', '..'));
     return response()->json([
-        'gambar' => Storage::allFiles('public'),
+        'gambar' => $files,
     ]);
 });
 
@@ -33,10 +33,10 @@ Route::post('v1/articles', function (Request $request) {
 
     if($request->hasFile('gambar')) {
 
-        $request->gambar->store('public/images');
+        $request->file('gambar')->storeAs('', $request->file('gambar')->getClientOriginalName(), 'public_uploads');
 
         return response()->json([
-            'status' => 'data berhasil di upload',
+            'status' => 'images/'.$request->file('gambar')->getClientOriginalName(),
         ]);
     }
 });
