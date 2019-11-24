@@ -43,6 +43,11 @@ return [
 
     'disks' => [
 
+        'upload' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/imagerz'
+        ],
+        
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
@@ -50,7 +55,8 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
+            // 'root' => storage_path('app/public'),
+            'root'   => public_path() . '/imagerz',
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
