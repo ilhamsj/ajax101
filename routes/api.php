@@ -23,7 +23,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('v1/articles', function () {
     // return new TestResource(Article::all());
     return response()->json([
-        'gambar' => Storage::files('images'),
+        'gambar' => Storage::files('public/images'),
     ]);
 });
 
@@ -34,7 +34,7 @@ Route::post('v1/articles', function (Request $request) {
 
     if($request->hasFile('gambar')) {
 
-        $request->gambar->store('images');
+        $request->gambar->store('public/images');
 
         return response()->json([
             'status' => 'data berhasil di upload',
