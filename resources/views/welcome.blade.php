@@ -22,6 +22,17 @@
 
         var url = 'api/v1/articles';
 
+        $.ajax({
+            type: "GET",
+            url: url,
+            // data: "data",
+            // dataType: "dataType",
+            success: function (response) {
+                console.log(response);
+                
+            }
+        });
+
         $('form').submit(function (e) { 
             e.preventDefault();
 

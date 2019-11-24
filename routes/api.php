@@ -21,7 +21,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('v1/articles', function () {
-    return new TestResource(Article::all());
+    // return new TestResource(Article::all());
+    return response()->json([
+        'gambar' => Storage::files('images'),
+    ]);
 });
 
 Route::post('v1/articles', function (Request $request) {
@@ -34,7 +37,7 @@ Route::post('v1/articles', function (Request $request) {
         $request->gambar->store('images');
 
         return response()->json([
-            'status' => 'data berhasil di upload'
+            'status' => 'data berhasil di upload',
         ]);
     }
 });
