@@ -44,8 +44,9 @@ return [
     'disks' => [
 
         'upload' => [
-            'driver' => 'local',
-            'root'   => public_path() . '/imagerz'
+            'driver' => 's3',
+            'key' => env('AWS_ACCESS_KEY_ID'),
+            'url' => 'https://api.imgbb.com/1/upload',
         ],
         
         'local' => [
@@ -55,8 +56,7 @@ return [
 
         'public' => [
             'driver' => 'local',
-            // 'root' => storage_path('app/public'),
-            'root'   => public_path() . '/imagerz',
+            'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],

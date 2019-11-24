@@ -21,9 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('v1/articles', function () {
-    // return new TestResource(Article::all());
     return response()->json([
-        'gambar' => Storage::files('public/images'),
+        'gambar' => Storage::allFiles('public'),
     ]);
 });
 

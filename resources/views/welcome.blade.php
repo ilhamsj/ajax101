@@ -16,6 +16,8 @@
         <button type="submit">Upload</button>
     </form>
 
+    <img src="" alt="" srcset="">
+
     <script src="{{ secure_url('js/app.js') }}"></script>
     <script src="{{ secure_url('js/jquery.min.js') }}"></script>
     <script>
@@ -25,11 +27,9 @@
         $.ajax({
             type: "GET",
             url: url,
-            // data: "data",
-            // dataType: "dataType",
             success: function (response) {
                 console.log(response);
-                
+                $('img').attr('src', response.gambar[0].replace('public', 'storage'));
             }
         });
 
