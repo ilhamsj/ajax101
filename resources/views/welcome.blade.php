@@ -49,6 +49,20 @@
                 dataType: "json",
                 success: function (response) {
                     console.log(response);
+                    $.ajax({
+                        type: "POST",
+                        url: "https://api.imgbb.com/1/upload",
+                        data: {
+                            key: 'de4648972ff3854bbaa2b44ca4e81321',
+                            image: response.status,
+                            name: 'abc',
+                        },
+                        dataType: "dataType",
+                        success: function (response) {
+                            console.log(response);
+                            
+                        }
+                    });
                 },
                 cache: false,
                 contentType: false,

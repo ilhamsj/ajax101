@@ -36,7 +36,7 @@ Route::post('v1/articles', function (Request $request) {
         $request->file('gambar')->storeAs('', $request->file('gambar')->getClientOriginalName(), 'public_uploads');
 
         return response()->json([
-            'status' => 'images/'.$request->file('gambar')->getClientOriginalName(),
+            'status' => env('app_url').'images/'.$request->file('gambar')->getClientOriginalName(),
         ]);
     }
 });
