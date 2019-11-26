@@ -20,7 +20,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="file" name="gambar" id="gambar" class="form-control">
+                        <input type="file" class="form-control-file" name="gambar" id="gambar" placeholder="" aria-describedby="fileHelpId">
                     </div>
 
                     <div class="form-group">
@@ -66,7 +66,21 @@
                 data: new FormData(this),
                 dataType: "json",
                 success: function (response) {
-                    console.log(response);
+                    $.ajax({
+                        type: "POST",
+                        url: "https://api.imgbb.com/1/upload",
+                        data: {
+                            key: 'de4648972ff3854bbaa2b44ca4e81321',
+                            image: 'https://asset.kompas.com/crops/UizJ1QOg4HJu2KoYXQ83BrJwmqc=/30x20:900x600/750x500/data/photo/2019/01/05/1119850905.jpg',
+                            name: 'abc',
+                        },
+                        success: function (response) {
+                            console.log(response);   
+                        },
+                        error: function (xhr) {
+                            console.log(xhr);
+                        }
+                    });
                 },
                 cache: false,
                 contentType: false,

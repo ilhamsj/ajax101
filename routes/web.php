@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Storage;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/myadmin', function () {
+    return view('admin.dashboard');
+});
