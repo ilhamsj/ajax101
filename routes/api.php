@@ -32,10 +32,9 @@ Route::post('v1/articles', function (Request $request) {
     ]);
 
     if($request->hasFile('gambar')) {
-
         $request->file('gambar')->storeAs('', $request->file('gambar')->getClientOriginalName(), 'public_uploads');
-
         return response()->json([
+            'req'   => $request->all(),
             'status' => env('app_url').'images/'.$request->file('gambar')->getClientOriginalName(),
         ]);
     }
