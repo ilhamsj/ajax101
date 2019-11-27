@@ -19,7 +19,7 @@
                     <tr>
                       <th>ID</th>
                       <th>Title</th>
-                      <th>Create At</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                 </table>
@@ -45,9 +45,9 @@
         serverSide: true,
         ajax: "{{ route('article.index') }}",
         columns: [
-            {data: 'id', name: 'id' },
+            {data: 'DT_RowIndex', name: 'DT_RowIndex' },
             {data: 'title', name: 'title' },
-            {data: 'created_at', name: 'created_at' },
+            {data: 'action', name: 'action' },
         ]
     });
   </script>
