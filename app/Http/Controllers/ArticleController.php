@@ -3,18 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Http\Resources\TestResource;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $article = Article::all();
+        return datatables($article)
+            ->addIndexColumn()
+            ->addColumn('action', function ($article) {
+                return 
+                '<a href="" data-id="'.$article->id.'" data-url="'.route('article.show', $article->id).'" data-status="'.$article->status.'" class="btnEdit mx-0 btn btn-secondary btn-sm btn-icon-split"> <span class="icon text-white-50"> <i class="fas fa-pencil-alt"></i> </span> </a>
+                <a href="" class="btnDelete btn btn-danger btn-icon-split btn-sm" data-id="'.$article->id.'" data-url="'.route('article.destroy', $article->id).'"><span class="icon text-white-50"> <i class="fas fa-trash-alt"></i> </span></a>';
+            })
+            ->toJson();
     }
 
     /**

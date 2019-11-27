@@ -7,17 +7,48 @@
 @section('content')
 <div class="row">
   <div class="col">
-    <div class="card shadow mb-4 border-0">
-      <div class="card-header border-0 py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
-      </div>
-      <div class="card-body">
-        <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
-        <p class="mb-0">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi quas cupiditate amet sunt ullam dolore. Adipisci facere incidunt vero dolorum nulla fugiat neque ducimus id, doloribus, maxime architecto vel porro.
-        </p>
-      </div>
-    </div>
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Title</th>
+                      <th>Create At</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+            </div>
+          </div>
+  
   </div>
 </div>
 @endsection
+
+@push('styles')
+  <link rel="stylesheet" href="{{ secure_url('vendor/datatables/dataTables.bootstrap4.min.css')}}">
+@endpush
+
+@push('scripts')
+  <script src="{{ secure_url('vendor/datatables/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ secure_url('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+  <script>
+      var table = $('table').DataTable({
+        responsive: true,
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('article.index') }}",
+        columns: [
+            {data: 'id', name: 'id' },
+            {data: 'title', name: 'title' },
+            {data: 'created_at', name: 'created_at' },
+        ]
+    });
+  </script>
+@endpush
