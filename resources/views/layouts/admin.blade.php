@@ -9,7 +9,7 @@
 
   <title>@yield('title') | Admin {{ ENV('APP_NAME') }}</title>
 
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="{{ secure_url('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
   <link href="{{ secure_url('css/sb-admin-2.min.css') }}" rel="stylesheet">
   @stack('styles')
 </head>
